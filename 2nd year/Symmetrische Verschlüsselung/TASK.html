@@ -1,0 +1,6635 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tgm-informationstechnologie.github.io/itsi-exercises-public/2nd%20year/Symmetrische%20Verschl%C3%BCsselung/TASK.html">
+      
+      
+        <link rel="prev" href="Software.html">
+      
+      
+        <link rel="next" href="../Template/Attachments.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Symmetrische Verschlüsselung - ITSI-Exercises</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#symmetrische-verschlusselung" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="ITSI-Exercises" class="md-header__button md-logo" aria-label="ITSI-Exercises" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ITSI-Exercises
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Symmetrische Verschlüsselung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="ITSI-Exercises" class="md-nav__button md-logo" aria-label="ITSI-Exercises" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ITSI-Exercises
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen zu "IT-Sicherheit"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1st year
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1st year
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemein
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Allgemein
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/Abgaberegeln.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abgaberegeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/Beurteilung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notengebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/KI%20Nutzung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regeln zur KI Nutzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/Lehrplan%20und%20Kompetenzen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Überblick Kompetenzen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/PDF%20erzeugen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF erzeugen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Allgemein/Unterrichtsverlauf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unterrichtsverlauf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digitale Signatur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digitale Signatur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Digitale%20Signatur/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Digitale%20Signatur/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Digitale%20Signatur/TASK-PDF%20Signieren.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digitale Signatur – Erstellen, Signieren, Überprüfen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Einführung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Einf%C3%BChrung/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Einf%C3%BChrung/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Einf%C3%BChrung/TASK-IT%20Sicherheit%20im%20Alltag.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IT Sicherheit im Alltag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Einf%C3%BChrung/TASK-Sicherheitsbegriffe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zentrale Sicherheitsbegriffe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hacking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hacking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hacking/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hacking/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hacking/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    "Name" - Taskdescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hashing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hashing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hashing/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hashing/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hashing/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Hashing/TASK-Hash%20erstellen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vergleichen von Daten mit einem Hash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Malware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Malware/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Malware/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Malware/TASK-Cybersecurity%20Quiz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cybersecurity Quiz, sicher vor Betrug schützen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Malware/TASK-Echter%20Malware%20Fall.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyse eines echten Malware-Falls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Malware/TASK-Pers%C3%B6nlicher%20Schutz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware-Schutz am eigenen Rechner verifizieren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mobilfunk
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mobilfunk
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Mobilfunk/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Mobilfunk/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Mobilfunk/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    "Name" - Taskdescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Passwörter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Passwörter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/TASK-Faktoren.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Faktoren der Authentifizierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/TASK-MFA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MFA aktivieren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/TASK-Passkeys.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Passkeys
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/TASK-Passwortmanager.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Passwortmanager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Passw%C3%B6rter/TASK-Passwortregeln.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NIST Passwortregeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persönliche Daten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Persönliche Daten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Pers%C3%B6nliche%20Daten/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Pers%C3%B6nliche%20Daten/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Pers%C3%B6nliche%20Daten/TASK-Cyber%E2%80%91Security%E2%80%91Szenario.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Szenario „Der kompromittierte Schüleraccount“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Pers%C3%B6nliche%20Daten/TASK-Hausaufgaben%20App.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hausaufgaben‑Abgabe‑App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Pers%C3%B6nliche%20Daten/TASK-Kategorien%20und%20Risiken.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kategorien personenbezogener Daten &amp; Risiken
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phishing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/TASK-Angriffsvektoren.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finde den Angriffsvektor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/TASK-Cybersecurity%20Quiz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cybersecurity Quiz, sicher vor Betrug schützen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/TASK-Mein%20Posteingang.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing in meinem Posteingang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Phishing/TASK-Phishing%20Quiz.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ransomware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ransomware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Ransomware/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Ransomware/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Ransomware/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    "Name" - Taskdescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SS7
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SS7
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/SS7/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/SS7/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/SS7/TASK-SMS%20Interception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyse von SMS-Interception über SS7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sicherung und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sicherung und Wiederherstellung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sicherung%20und%20Wiederherstellung/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sicherung%20und%20Wiederherstellung/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sicherung%20und%20Wiederherstellung/TASK-Backup%20Privat.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backups für Privatanwender*innen / Studierende
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Social Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Social%20Engineering/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Social%20Engineering/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Social%20Engineering/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    "Name" - Taskdescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonstiges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sonstiges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sonstiges/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sonstiges/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Sonstiges/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    "Name" - Taskdescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Template
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Template/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Template/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1st%20year/Template/TASK-Template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Name
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2nd year
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2nd year
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemein
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Allgemein
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Beurteilung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notengebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Dokumentationsrichtlinie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemeine Dokumentations- und Abgaberichtlinie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/KI%20Nutzung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regeln zur KI Nutzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Lehrplan%20und%20Kompetenzen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Überblick Kompetenzen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Unterrichtsverlauf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unterrichtsverlauf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antivirus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Antivirus
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Antivirus/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Antivirus/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Antivirus/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Von Antivirus über EDR zu XDR und DLP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asymmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asymmetrische Verschlüsselung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Asymmetrische%20Verschl%C3%BCsselung/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Asymmetrische%20Verschl%C3%BCsselung/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Asymmetrische%20Verschl%C3%BCsselung/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Asymmetrische%20Verschl%C3%BCsselung/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asymmetrische Verschlüsselung mittels RSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenschutz
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datenschutz
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Datenschutz/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Datenschutz/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Datenschutz/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyse von Datenschutzeinstellungen digitaler Anwendungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diffie Hellmann
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffie Hellmann
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffie%20Hellmann/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffie%20Hellmann/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffie%20Hellmann/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schlüsselaustausch nach dem Diffie-Hellman Protokoll
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drive Encryption
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Drive Encryption
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Drive%20Encryption/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Drive%20Encryption/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Drive%20Encryption/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Festplattenverschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hashing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hashing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proxy/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proxy/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proxy/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxy und Geo Location
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnersicherheit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechnersicherheit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechnersicherheit/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechnersicherheit/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechnersicherheit/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnersicherheit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIEM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIEM/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIEM/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SIEM/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Auswertung mittels SIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steganographie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Steganographie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steganographie/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steganographie/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steganographie/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steganographie in einem Bild anwenden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Symmetrische Verschlüsselung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="TASK.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einführung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kompetenzzuordnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompetenzzuordnung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompetenzzuordnung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundlagen-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundlagen der IT Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methoden-und-verfahren-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methoden und Verfahren der IT-Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-aufgabenbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Aufgabenbeschreibung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Aufgabenbeschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-grundkompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Grundkompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Grundkompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-1-caesar-verschlusselung-substitutions-chiffre-monoalphabetischen-verschlusselung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 1 - Caesar Verschlüsselung (Substitutions-Chiffre - monoalphabetischen Verschlüsselung)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-2-eine-verbesserung-des-casar-verfahrens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 2 - Eine Verbesserung des Cäsar-Verfahrens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-3-vigenere-verfahren-substitutions-chiffre-polyalphabetischen-verschlusselung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 3 - Vigenère-Verfahren (Substitutions-Chiffre - polyalphabetischen Verschlüsselung)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-4-xor-verschlusselung-blockchiffre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 4 - XOR Verschlüsselung (Blockchiffre)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-erweiterte-kompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Erweiterte Kompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Erweiterte Kompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-5-excel-verschlusselungstool-fur-das-vigenere-verfahren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 5 - Excel Verschlüsselungstool für das Vigenère-Verfahren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-6-one-time-pad-otp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 6 - One-Time-Pad (OTP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fragestellungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragestellungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewertung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-read-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Read Material
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attachments
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Template
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/Template-TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise Title
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13_4" id="__nav_3_13_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_13_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Attachments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/Attachments/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13_5" id="__nav_3_13_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead Published
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_13_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PreRead Published
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/PreRead-Published/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPN
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VPN
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VPN/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VPN/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VPN/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WireGuard VPN einrichten und testen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_15" id="__nav_3_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiederholung 1. Jahrgang
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wiederholung 1. Jahrgang
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wiederholung%201.%20Jahrgang/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wiederholung%201.%20Jahrgang/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wiederholung%201.%20Jahrgang/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recherche eines Cyberangriffs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_15_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_15_4" id="__nav_3_15_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_15_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_15_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Attachments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wiederholung%201.%20Jahrgang/Attachments/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_15_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_15_5" id="__nav_3_15_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead Published
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_15_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_15_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PreRead Published
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wiederholung%201.%20Jahrgang/PreRead-Published/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einführung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kompetenzzuordnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompetenzzuordnung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompetenzzuordnung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundlagen-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundlagen der IT Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methoden-und-verfahren-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methoden und Verfahren der IT-Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-aufgabenbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Aufgabenbeschreibung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Aufgabenbeschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-grundkompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Grundkompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Grundkompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-1-caesar-verschlusselung-substitutions-chiffre-monoalphabetischen-verschlusselung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 1 - Caesar Verschlüsselung (Substitutions-Chiffre - monoalphabetischen Verschlüsselung)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-2-eine-verbesserung-des-casar-verfahrens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 2 - Eine Verbesserung des Cäsar-Verfahrens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-3-vigenere-verfahren-substitutions-chiffre-polyalphabetischen-verschlusselung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 3 - Vigenère-Verfahren (Substitutions-Chiffre - polyalphabetischen Verschlüsselung)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-4-xor-verschlusselung-blockchiffre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 4 - XOR Verschlüsselung (Blockchiffre)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-erweiterte-kompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Erweiterte Kompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Erweiterte Kompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-5-excel-verschlusselungstool-fur-das-vigenere-verfahren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 5 - Excel Verschlüsselungstool für das Vigenère-Verfahren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-6-one-time-pad-otp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 6 - One-Time-Pad (OTP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fragestellungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragestellungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewertung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-read-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Read Material
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attachments
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="symmetrische-verschlusselung">Symmetrische Verschlüsselung</h1>
+<h2 id="einfuhrung">Einführung</h2>
+<p>Symmetrische Verschlüsselung nutzt einen einzigen Schlüssel sowohl für die Ver- als auch für die Entschlüsselung von Daten. Dieser geheime Schlüssel muss vorab sicher zwischen Sender und Empfänger ausgetauscht werden, was das Hauptproblem dieses Verfahrens darstellt. Symmetrische Algorithmen wie AES (Advanced Encryption Standard) sind besonders schnell und effizient und eignen sich daher gut für die Verschlüsselung großer Datenmengen, wie z. B. beim Schutz von Dateien oder der Übertragung innerhalb einer geschlossenen Sitzung.</p>
+<h2 id="ziele">Ziele</h2>
+<ul>
+<li>Grundverständnis zum Prinzip der symmetrischen Verschlüsselung entwickeln</li>
+<li>Gängige Algorithmen kennenlernen (Eigenschaften und Einsatzgebiete)</li>
+<li>Praktische Anwendung um einfache Daten mit einem symmetrischen Algorithmus verschlüsseln und entschlüsseln</li>
+<li>Potenzielle Schwachstellen bei der Verwendung symmetrischer Verschlüsselung erklären</li>
+</ul>
+<h2 id="kompetenzzuordnung">Kompetenzzuordnung</h2>
+<h4 id="grundlagen-der-it-sicherheit">Grundlagen der IT Sicherheit</h4>
+<ul>
+<li>die grundlegenden Begriffe der Kryptographie erklären;</li>
+<li>die Funktionsweise kryptographischer Verfahren erklären und anforderungsgerechte Verfahren auswählen</li>
+</ul>
+<h4 id="methoden-und-verfahren-der-it-sicherheit">Methoden und Verfahren der IT-Sicherheit</h4>
+<ul>
+<li>Werkzeuge zur Verschlüsselung konfigurieren und einsetzen</li>
+</ul>
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+<ul>
+<li>Cäsarscheibe ausgedruckt und zusammengesetzt: https://inform21.ch/wp-content/uploads/2016/08/IiN_I_Caesar_Codierscheibe.pdf</li>
+<li>Vigenere Tabelle gedruckt: <a href="https://lehrerfortbildung-bw.de/u_matnatech/imp/gym/bp2016/fb1/4_i4_iud/2_kopiervorlagen/4_vigenere/05_iud_vigenere_vorlage.pdf">05_iud_vigenere_vorlage.pdf</a></li>
+<li>Boolsche Algebra XOR wiederholt (SYT 1. Jahrgang)</li>
+</ul>
+<h2 id="detaillierte-aufgabenbeschreibung">Detaillierte Aufgabenbeschreibung</h2>
+<h3 id="aufgabe-grundkompetenz">Aufgabe Grundkompetenz:</h3>
+<h4 id="teil-1-caesar-verschlusselung-substitutions-chiffre-monoalphabetischen-verschlusselung">Teil 1 - Caesar Verschlüsselung (Substitutions-Chiffre - monoalphabetischen Verschlüsselung)</h4>
+<p>Beispiel: Cäsar, Schlüssel 4 (bzw. Schlüssel E)</p>
+<p><img src="Pictures\caesar.png" style="zoom:100%;" /></p>
+<p>Anleitung für eine Codierscheibe: https://inform21.ch/wp-content/uploads/2016/08/IiN_I_Caesar_Codierscheibe.pdf</p>
+<p><u>Verschlüsselung</u></p>
+<ul>
+<li>Verschlüssle<code>HELLOWORLD</code> mit dem <code>Schlüssel 4</code></li>
+<li>Verschlüssle einen kurzen <strong>individuellen</strong> Klartext von mind. 15 Zeichen (z. B. „DIE SONNE SCHEINT“) und gib es deinem Nachbarn zum Entschlüsseln. Nenne dazu auch den Schlüssel.</li>
+</ul>
+<p><u>Entschlüsselung</u></p>
+<ul>
+<li>Entschlüssle <code>AIMXIV WS</code> mit dem <code>Schlüssel 4</code></li>
+<li>Entschlüssele den verschlüsselten Text den du von deinem Nachbarn bekommen hast mit dem bekannten Schlüssel.</li>
+<li>Überprüfe, ob der ursprüngliche Klartext korrekt wiederhergestellt wurde.</li>
+</ul>
+<p><u>Brute-Force-Angriff (Ciphertext Only Attack)</u> </p>
+<p>Du erhältst einen verschlüsselten Text, aber kennst den Schlüssel nicht.</p>
+<blockquote>
+<p>IMDGYWAQZZQZUZRADYMFUWQDNQEEQDDQOTZQZMXEYMFTQYMFUWQDIQUXEUQY
+ UFUTDQZLQTZRUZSQDZNUEFMGEQZPHUQDGZPLIMZLUSLMQTXQZWAQZZQZ</p>
+</blockquote>
+<p>Sie wissen, dass er aus einem deutschen Klartext durch eine Cäsarverschiebung <code>y = (x+e) mod 26</code> entstand.</p>
+<p><code>x</code>: numerischer Wert des Klartextbuchstabens (z. B. A = 0, B = 1, ..., Z = 25)
+<code>e</code>: Schlüssel (Verschiebung)
+<code>y</code>: numerischer Wert des verschlüsselten Buchstabens</p>
+<ul>
+<li>Schreibe ein kleines Programm oder nutze eine Tabelle, um alle möglichen Schlüssel durchzuprobieren.</li>
+<li>Finde heraus, bei welchem Schlüssel der Text sinnvoll erscheint.</li>
+<li>Wie viele Möglichkeiten musst du maximal ausprobieren?</li>
+</ul>
+<p><u>Häufigkeitsanalyse (Ciphertext Only Attack)</u></p>
+<p>Analysiere einen längeren verschlüsselten Text.</p>
+<blockquote>
+<p>JX LNGY SZW EBJN XHMBNJWNLJ INSLJ NS IJW NSKTWRFYNP: HFHMJ-NSAFQNINJWZSL, IFX GJSJSSJS ATS INSLJS ZSI JNSX-IFSJGJS-KJMQJW</p>
+</blockquote>
+<ul>
+<li>Zähle die Häufigkeit der Buchstaben.</li>
+<li>Vergleiche mit typischen Häufigkeiten im Deutschen (z. B. <strong>E</strong>, N, I, S sind häufig).</li>
+<li>Versuche, den Schlüssel zu erraten und den Text zu entschlüsseln.</li>
+</ul>
+<p>Hinweis:</p>
+<ul>
+<li>Caesar-Verschlüsselung verändert die Buchstaben, aber nicht deren Häufigkeit.</li>
+<li>Häufigkeitsanalyse ist besonders effektiv bei längeren Texten.</li>
+</ul>
+<p>Du kannst auch folgende Online Hilfestellung dazu nutzen: <a href="https://inf-schule.de/kids/datennetze/verschluesselung/analyse">inf-schule | Vertrauliche Kommunikation » Für Fortgeschrittene: Kryptoanalyse</a></p>
+<p><u>Vertiefung</u></p>
+<ul>
+<li>Wie könnte man das Cäsar-Verfahren verbessern und sicherer machen? Nenne mindestens 3 unterschiedliche Ideen.</li>
+<li>Mit welchem Schlüssel muss man den Kryptotext verschlüsseln, um den Klartext zu erhalten?</li>
+</ul>
+<h4 id="teil-2-eine-verbesserung-des-casar-verfahrens">Teil 2 - Eine Verbesserung des Cäsar-Verfahrens</h4>
+<p>Es werden mehrere Caesar-Schlüssel immer abwechselnd verwendet.</p>
+<p>Beim Schlüsselwort <code>HUT</code> benötigt man also die Cäsar-Alphabete H, U und T.</p>
+<ul>
+<li>Ergänze die Tabelle mit den drei Schlüsselalphabeten.</li>
+<li>Schreibe das Schlüsselwort unter die Nachricht – so oft wie nötig.</li>
+</ul>
+<p><img src="Pictures\bettercaesar01.png" style="zoom:100%;" /></p>
+<ul>
+<li>Verschlüssle jetzt die Nachricht.</li>
+</ul>
+<p><img src="Pictures\bettercaesar02.png" style="zoom:100%;" /></p>
+<ul>
+<li>Was fällt dir auf?</li>
+</ul>
+<h4 id="teil-3-vigenere-verfahren-substitutions-chiffre-polyalphabetischen-verschlusselung">Teil 3 - Vigenère-Verfahren (Substitutions-Chiffre - polyalphabetischen Verschlüsselung)</h4>
+<p><img src="Pictures\vigenere.png" style="zoom:100%;" /></p>
+<p><u>Verschlüsselung</u></p>
+<ul>
+<li>Verschlüssele den folgenden Klartext mit dem Schlüsselwort "<code>CODE</code>".</li>
+<li>Beschreibe, wie das Verschlüsseln funktioniert.</li>
+</ul>
+<blockquote>
+<p>DIE VIGENERE VERSCHLUESSELUNG IST EINE POLYALPHABETISCHE METHODE</p>
+</blockquote>
+<p>Hinweise:</p>
+<ul>
+<li>Entferne Leerzeichen und Sonderzeichen.</li>
+<li>Verwende das Vigenère-Verfahren: Jeder Buchstabe des Klartexts wird mit dem entsprechenden Buchstaben des Schlüsselworts verschlüsselt (wiederhole das Schlüsselwort bei Bedarf).</li>
+<li>Nutze das deutsche Alphabet (A-Z, ohne Umlaute).</li>
+</ul>
+<p><u>Entschlüsselung</u></p>
+<ul>
+<li>Entschlüssele den folgenden Geheimtext mit dem Schlüsselwort "<code>CODE</code>".</li>
+<li>Beschreibe, wie das Entschlüsseln funktioniert.</li>
+</ul>
+<blockquote>
+<p>HSZV OXGZV VHZV ZKXGZV ZKXGZV ZKXGZV</p>
+</blockquote>
+<p>Hinweise:</p>
+<ul>
+<li>Nutze die gleiche Methode wie bei der Verschlüsselung, aber rückwärts.</li>
+<li>Rekonstruiere den Klartext und überprüfe, ob er sinnvoll ist.</li>
+</ul>
+<p><u>Häufigkeitsanalyse (Ciphertext Only Attack)</u></p>
+<ul>
+<li>Überlege dir, wie sicher dieses Verfahren ist. Hast du eine Idee, wie man es „knacken“ kann?</li>
+<li>Analysiere den folgenden verschlüsselten Text, bei dem das Schlüsselwort unbekannt ist:</li>
+</ul>
+<blockquote>
+<p>PKANTTBJXTIGZWESBXGJXYPTBXMUCKZWEJPXIHVOMKSMLLVWPMXPVXUJXPALLVNULLAMVOMGLQGICVOUNZAWPMTEBLLQGMHKKILNMYYWKLVXTMXYQGBVL</p>
+</blockquote>
+<p>Fragen:</p>
+<ul>
+<li>Welche Buchstaben kommen am häufigsten vor?</li>
+<li>Was könnte das über das verwendete Schlüsselwort aussagen?</li>
+<li>Wie könnte man mit der Kasiski-Methode oder Häufigkeitsanalyse das Schlüsselwort herausfinden?</li>
+</ul>
+<p>Nutze dafür die Tools von: <a href="https://lehrerfortbildung-bw.de/u_matnatech/imp/gym/bp2016/fb1/4_i4_iud/1_hintergrund/2_verlauf/06_v-brechen/">Vigenère – Brechen</a> =&gt; empfohlen AngriffVigenere_Kasiski → BreakVigenere.jar</p>
+<p>Tipp:</p>
+<ul>
+<li>Versuche, die Länge des Schlüsselworts zu schätzen.</li>
+<li>Vergleiche die Häufigkeit der Buchstaben mit typischen Häufigkeiten im Deutschen (z. B. <strong>E</strong>, N, I, S, R, A, T).</li>
+</ul>
+<h4 id="teil-4-xor-verschlusselung-blockchiffre">Teil 4 - XOR Verschlüsselung (Blockchiffre)</h4>
+<p><img src="Pictures\XOR.png" style="zoom:100%;" /></p>
+<p><u>Verschlüsselung</u></p>
+<ul>
+<li>Wandle den Klartext <code>BLOCKCHIFFRE</code> in ASCII-Zahlen um.</li>
+<li>Wandle die ASCII-Zahlen in Binärzahlen (8 Bit).</li>
+<li>Nimm den Geheimschlüssel <code>ASCII</code> und wandle ihn ebenfalls in Binärzahlen.</li>
+<li>Führe XOR zwischen Klartext-Bits und Schlüssel-Bits durch.</li>
+<li>Ergebnis ist der verschlüsselte Text in Binärform.</li>
+<li>Verschlüssle einen kurzen <strong>individuellen</strong> Klartext von mind. 15 Zeichen (z. B. „DIE SONNE SCHEINT“) und gib es deinem Nachbarn zum Entschlüsseln. Nenne dazu auch den Schlüssel.</li>
+<li>Was passiert, wenn der Schlüssel kürzer als der Text ist?</li>
+</ul>
+<p><u>Entschlüsselung</u></p>
+<ul>
+<li>Verschlüssle <code>EINE SEHR KLEINE SENSATION</code> mit dem Schlüssel <code>ZUSE</code></li>
+<li>Entschlüssele den verschlüsselten Text den du von deinem Nachbarn bekommen hast mit dem bekannten Schlüssel.</li>
+<li>Überprüfe, ob der ursprüngliche Klartext korrekt wiederhergestellt wurde.</li>
+</ul>
+<p><u>Mustererkennung</u></p>
+<ul>
+<li>Verschlüssele zwei verschiedene Texte mit demselben Schlüssel.</li>
+</ul>
+<blockquote>
+<p>Text 1: HELLO
+Text 2: WORLD
+Schlüssel: KEY</p>
+</blockquote>
+<ul>
+<li>Welche Faktoren beeinflussen die Sicherheit unserer XOR-Blockchiffre?</li>
+<li>Was passiert, wenn man denselben Schlüssel mehrfach verwendet?</li>
+<li>Kann man Muster im verschlüsselten Text erkennen?</li>
+<li>Wie sicher ist die Methode gegen moderne Angriffe?</li>
+</ul>
+<p><u>Known Plaintext Angriff</u></p>
+<p>Der Geheimtext</p>
+<blockquote>
+<p>{111, 66, 75, 75, 72, 7, 80, 72, 85, 75, 67, 6}</p>
+</blockquote>
+<p>entstand durch XOR-Verschlüsselung <code>y = x XOR e</code> über dem <code>Alphabet Z256</code>.</p>
+<p>Sie wissen, dass <code>111 zu H (= 72 im ASCII Code)</code> entschlüsselt wird.</p>
+<p>Entschlüsseln Sie den gesamten Geheimtext. </p>
+<h3 id="aufgabe-erweiterte-kompetenz">Aufgabe Erweiterte Kompetenz:</h3>
+<h4 id="teil-5-excel-verschlusselungstool-fur-das-vigenere-verfahren">Teil 5 - Excel Verschlüsselungstool für das Vigenère-Verfahren</h4>
+<p>Erstelle eine Excel-Tabelle, die:</p>
+<ul>
+<li>Einen Klartext verschlüsselt mit dem Vigenère-Verfahren</li>
+<li>Den verschlüsselten Text entschlüsselt</li>
+<li>Die Buchstabenverschiebung sichtbar macht</li>
+</ul>
+<p><u>Eingabefelder:</u></p>
+<ul>
+<li>Klartext (nur Verschlüsselung) oder Chiffretext (nur Entschlüsselung)</li>
+<li>Schlüssel</li>
+<li>Zeichensatz</li>
+</ul>
+<p><u>Ausgabefelder:</u></p>
+<ul>
+<li>Chiffretext (nur Verschlüsselung) oder Klartext (nur Entschlüsselung)</li>
+</ul>
+<p>Gestalte das Excel-Tool optisch ansprechend.</p>
+<h4 id="teil-6-one-time-pad-otp">Teil 6 - One-Time-Pad (OTP)</h4>
+<p>Beschreibe die One-Time-Pad (OTP), die die Methode, ihre Eigenschaften und ihre sicherheitstechnische Bedeutung.</p>
+<p>Denke dir einen längeren Klartext aus (max. 1024 Zeichen). Wähle einen mindestens genauso langen Schlüssel (max. 1024 Zeichen).</p>
+<p>Verschlüssele deinen Klartext mit dem Vigenère-Verfahren. (z.B. mit CrypTool)</p>
+<ul>
+<li>Kann deine Sitznachbarin / dein Sitznachbar deinen erzeugten Geheimtext knacken? Begründe.</li>
+<li>Was sind die Voraussetzungen für perfekte Sicherheit?</li>
+<li>Was sind Schwächen und praktische Probleme?</li>
+<li>Was sind Angriffsvektoren bei falscher Verwendung?</li>
+</ul>
+<h2 id="fragestellungen">Fragestellungen</h2>
+<p><strong>Begriffe</strong></p>
+<table>
+<thead>
+<tr>
+<th>Verfahren</th>
+<th>Beschreibung</th>
+<th>Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Symmetrische Verfahren</td>
+<td>Sender und Empfänger haben den gleichen Schlüssel. Die Nachricht wird mit dem gleichen Schlüssel ver- und entschlüsselt.</td>
+<td></td>
+</tr>
+<tr>
+<td>Asymmetrische Verfahren</td>
+<td>Sender und Empfänger haben verschiedene Schlüssel.</td>
+<td></td>
+</tr>
+<tr>
+<td>Transpositions-verfahren</td>
+<td>Die Buchstaben des Klartextes werden durch die Verschlüsselung anders angeordnet.</td>
+<td></td>
+</tr>
+<tr>
+<td>Substitutions-verfahren</td>
+<td>Die Buchstaben des Klartextes werden bei der Verschlüsselung durch andere Buchstaben (oder Zeichen) ersetzt.</td>
+<td></td>
+</tr>
+<tr>
+<td>Monoalphabetische Substitution</td>
+<td>Substitutionsverfahren, bei dem nur ein einziges Schlüsselalphabet verwendet wird.</td>
+<td></td>
+</tr>
+<tr>
+<td>Polyalphabetische Substitution</td>
+<td>Substitutionsverfahren, bei dem mehrere Schlüsselalphabete verwendet werden.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ergänze auch weitere Verfahren die nicht hier behandelt wurden!</p>
+<p><strong>Funktionsweise &amp; Anwendung</strong></p>
+<ul>
+<li>Wie funktioniert die Verschlüsselung und Entschlüsselung bei einem symmetrischen Verfahren?</li>
+<li>Was passiert, wenn der Schlüssel bei der Übertragung abgefangen wird?</li>
+<li>Welche Vorteile bietet symmetrische Verschlüsselung gegenüber asymmetrischer</li>
+<li>In welchen praktischen Anwendungen wird symmetrische Verschlüsselung eingesetzt?</li>
+</ul>
+<p><strong>Vertiefung &amp; Sicherheit</strong></p>
+<ul>
+<li>Was sind die Schwächen von symmetrischer Verschlüsselung?</li>
+<li>Wie kann man Schlüssel sicher zwischen Kommunikationspartnern austauschen?</li>
+<li>Was ist ein Known-Plaintext-Angriff und wie gefährdet er symmetrische Verfahren?</li>
+<li>Was ist ein Cyiphertext-Only-Angriff und wie gefährdet er symmetrische Verfahren?</li>
+<li>Warum ist die Schlüssellänge entscheidend für die Sicherheit?</li>
+<li>Was ist der Unterschied zwischen Block- und Stromverschlüsselung?</li>
+</ul>
+<p><strong>Kleine Denkaufgaben</strong></p>
+<ul>
+<li>Ein Klartext besteht aus 100 Zeichen. Du verwendest einen symmetrischen Schlüssel mit 64 Bit Länge.
+  <strong>Frage:</strong> Reicht dieser Schlüssel aus, um den gesamten Text sicher zu verschlüsseln? Warum oder warum nicht?</li>
+<li>Zwei Nachrichten wurden mit demselben symmetrischen Schlüssel verschlüsselt. <strong>Frage:</strong> Welche Risiken entstehen dadurch? Was könnte ein Angreifer daraus ableiten?</li>
+<li>Alice und Bob möchten sicher kommunizieren. Sie verwenden symmetrische Verschlüsselung.
+  <strong>Frage:</strong> Wie können sie den Schlüssel sicher austauschen, ohne dass ein Dritter ihn mitliest?</li>
+<li>Was ist der Unterschied zwischen Blockverschlüsselung und Stromverschlüsselung?
+  <strong>Frage:</strong> Welche Methode eignet sich besser für Live-Datenübertragung?</li>
+<li>Du musst eine Datei verschlüsseln, die mehrere Megabyte groß ist.
+  <strong>Frage:</strong> Welcher symmetrische Algorithmus wäre geeignet? Warum?</li>
+<li>Ein Schlüssel ist 40 Bit lang.
+  <strong>Frage:</strong> Ist das heute noch sicher? Begründe deine Antwort.</li>
+<li>Du möchtest eine Nachricht verschlüsseln und gleichzeitig die Identität des Absenders bestätigen.
+  <strong>Frage:</strong> Reicht symmetrische Verschlüsselung dafür aus?</li>
+</ul>
+<h2 id="abgabe">Abgabe</h2>
+<p>Die durchgeführten Tätigkeiten und gewünschten Elemente müssen in einem Protokoll zusammengefasst werden.</p>
+<p>Die Fragestellungen sollen ebenfalls in diesem Dokument bearbeitet werden.</p>
+<p>Das Protokoll ist eingescannt als ein <strong>PDF</strong> File zusammen mit einem evt. vorhandenem Projektfile auf moodle abzugeben.</p>
+<h2 id="bewertung">Bewertung</h2>
+<p>Gruppengröße: 1 Person
+Maximale Punktezahl Grundkompetenz: 2
+Zusätzliche Punkte erweiterte Kompetenz (vollständige GK ist Voraussetzung): 1
+Maximale Punkteanzahl bei verspäteter Abgabe (&lt;= 1 Woche): 1
+Maximale Punkteanzahl bei verspäteter Abgabe (&gt; 1 Woche): 0,5</p>
+<h2 id="quellen">Quellen</h2>
+<ul>
+<li><a href="https://norbert-pohlmann.com/wp-content/uploads/2022/02/2-kryptographie-vorlesung-prof-norbert-pohlmann-02-22.pdf">Microsoft PowerPoint - 2-kryptographie-vorlesung-prof-norbert-pohlmann-02-22</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://norbert-pohlmann.com/glossar-cyber-sicherheit/symmetrische-verschluesselung/">Symmetrische Verschlüsselung - Glossar - Prof. Pohlmann</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://fwz.ph-noe.ac.at/fileadmin/inf/AG_2011/krypto_tz_2011.pdf">krypto_tz_2011.dvi</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.swisseduc.ch/informatik/daten/kryptologie_geschichte/index.html">SwissEduc - Informatik - Geschichte der Kryptologie</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.cryptool.org/de/cto/caesar/">Caesar / ROT13 – CrypTool</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.infgsnds.de/lib/exe/fetch.php?media=modul4:caesar_verschluesselung.pdf">fetch.php</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://inform21.ch/wp-content/uploads/2016/08/IiN_I_Caesar_Codierscheibe.pdf">Microsoft Word - IiN_I_Caesar_Codierscheibe.docx</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.cryptool.org/de/cto/vigenere/">Vigenère und Varianten – CrypTool</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://inf-schule.de/kids/datennetze/verschluesselung">inf-schule | Daten und Netze » Vertrauliche Kommunikation</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.cryptool.org/de/cto/xor/">XOR – CrypTool</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://www.ascii-code.com/de">ASCII-Tabelle mit ASCII-Codes, Zeichen und Symbolen</a> - letzter Abruf 31.10.2025</li>
+<li><a href="https://ki-lehrer.info/informatik/infmb7-klasse-7/infmb72-sicher-kommunizieren-8/infmb721-symmetrische-verschluesselung-4-2/infmb7218-xor-verschluesselung">InfMb7.2.1.8 - XOR-Verschlüsselung</a> - letzter Abruf 31.10.2025</li>
+</ul>
+<h2 id="pre-read-material">Pre-Read Material</h2>
+<table>
+<thead>
+<tr>
+<th>Datei</th>
+<th>Typ</th>
+<th>Größe</th>
+<th>Geändert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📕 <a href="PreRead-Published/178-Kryptographie-I-Von-der-Geheimwissenschaft-zur-allt%C3%A4glichen-Nutzanwendung.pdf">178-Kryptographie-I-Von-der-Geheimwissenschaft-zur-alltäglichen-Nutzanwendung.pdf</a></td>
+<td>.pdf</td>
+<td>279.04 KB</td>
+<td>2026-04-14 19:45</td>
+</tr>
+<tr>
+<td>📕 <a href="PreRead-Published/180-Kryptographie-II-Von-der-Geheimwissenschaft-zur-allt%C3%A4glichen-Nutzanwendung-%E2%80%93-Elementare-Verschl%C3%BCsselungsverfahren.pdf">180-Kryptographie-II-Von-der-Geheimwissenschaft-zur-alltäglichen-Nutzanwendung-–-Elementare-Verschlüsselungsverfahren.pdf</a></td>
+<td>.pdf</td>
+<td>629.06 KB</td>
+<td>2026-04-14 19:45</td>
+</tr>
+<tr>
+<td>📕 <a href="PreRead-Published/181-Kryptographie-III-Von-der-Geheimwissenschaft-zur-allt%C3%A4glichen-Nutzanwendung-Symmetrische-Verschl%C3%BCsselungsverfahren-Norbert-Pohlmann.pdf">181-Kryptographie-III-Von-der-Geheimwissenschaft-zur-alltäglichen-Nutzanwendung-Symmetrische-Verschlüsselungsverfahren-Norbert-Pohlmann.pdf</a></td>
+<td>.pdf</td>
+<td>819.6 KB</td>
+<td>2026-04-14 19:45</td>
+</tr>
+<tr>
+<td>📕 <a href="PreRead-Published/2-kryptographie-vorlesung-prof-norbert-pohlmann-02-22.pdf">2-kryptographie-vorlesung-prof-norbert-pohlmann-02-22.pdf</a></td>
+<td>.pdf</td>
+<td>8.25 MB</td>
+<td>2026-04-14 19:45</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attachments">Attachments</h2>
+<p><em>Ordner nicht gefunden: 2nd year/Symmetrische Verschlüsselung/Attachments</em></p>
+<hr />
+<p>f4f4d61 Apr 14, 2026 21:44:50 by Berndt Sevcik</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
