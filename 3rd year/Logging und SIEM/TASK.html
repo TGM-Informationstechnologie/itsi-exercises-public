@@ -1,0 +1,5325 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tgm-informationstechnologie.github.io/itsi-exercises-public/3rd%20year/Logging%20und%20SIEM/TASK.html">
+      
+      
+        <link rel="prev" href="TASK%20%28Publication%29.html">
+      
+      
+        <link rel="next" href="../Netzwerksicherheit/Attachments.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Log Auswertung - ITSI-Exercises</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#log-auswertung" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="ITSI-Exercises" class="md-header__button md-logo" aria-label="ITSI-Exercises" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ITSI-Exercises
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Log Auswertung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="ITSI-Exercises" class="md-nav__button md-logo" aria-label="ITSI-Exercises" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ITSI-Exercises
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen zu "IT-Sicherheit"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2nd year
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2nd year
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (Optional) Antivirus und EDR
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    (Optional) Antivirus und EDR
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/%28Optional%29%20Antivirus%20und%20EDR/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/%28Optional%29%20Antivirus%20und%20EDR/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/%28Optional%29%20Antivirus%20und%20EDR/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Von Antivirus über EDR zu XDR und DLP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemein
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Allgemein
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Beurteilung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notengebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Cheat%20Sheets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Dokumentationsrichtlinie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemeine Dokumentations- und Abgaberichtlinie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Feedback.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/KI%20Disclaimer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/KI%20Nutzung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regeln zur KI Nutzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Lehrplan%20und%20Kompetenzen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Überblick Kompetenzen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Allgemein/Unterrichtsverlauf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unterrichtsverlauf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asymmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asymmetrische Verschlüsselung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/Finde%20das%20Kennwort.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finde das Kennwort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/RSA%20Chat%20Hilfe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RSA Chat Schritt für Schritt anwenden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Asymmetrische%20Verschl%C3%BCsselung/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asymmetrische Verschlüsselung mittels RSA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenschutz
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datenschutz
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Datenschutz/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Datenschutz/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Datenschutz/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyse von Datenschutzeinstellungen und digitalen Datenspuren
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diffie Hellmann
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffie Hellmann
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Diffie%20Hellmann/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Diffie%20Hellmann/Finde%20das%20Kennwort.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finde das Kennwort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Diffie%20Hellmann/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Diffie%20Hellmann/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schlüsselaustausch nach dem Diffie-Hellman Protokoll
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drive Encryption
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Drive Encryption
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Drive%20Encryption/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Drive%20Encryption/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Drive%20Encryption/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schutz von Daten durch Laufwerks- und Dateiverschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Proxy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Proxy/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Proxy/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Proxy/TASK%20-%20Proxy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxy und Geo Location
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Proxy/TASK%20-%20Recherche.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recherche "Geolocation in the Internet"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnersicherheit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechnersicherheit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Rechnersicherheit/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Rechnersicherheit/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Rechnersicherheit/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechnersicherheit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steganographie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Steganographie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Steganographie/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Steganographie/Finde%20das%20Kennwort.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finde das Kennwort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Steganographie/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Steganographie/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steganographie in einem Bild anwenden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Symmetrische Verschlüsselung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Symmetrische%20Verschl%C3%BCsselung/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Symmetrische%20Verschl%C3%BCsselung/Finde%20das%20Kennwort.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finde das Kennwort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Symmetrische%20Verschl%C3%BCsselung/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Symmetrische%20Verschl%C3%BCsselung/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Symmetrische%20Verschl%C3%BCsselung/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetrische Verschlüsselung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiederholung 1. Jahrgang
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wiederholung 1. Jahrgang
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Wiederholung%201.%20Jahrgang/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Wiederholung%201.%20Jahrgang/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2nd%20year/Wiederholung%201.%20Jahrgang/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recherche eines Cyberangriffs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3rd year
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3rd year
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemein
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Allgemein
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Beurteilung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notengebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Cheat%20Sheets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Dokumentationsrichtlinie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Allgemeine Dokumentations- und Abgaberichtlinie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Feedback.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/KI%20Disclaimer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI Disclaimer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/KI%20Nutzung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regeln zur KI Nutzung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Lehrplan%20und%20Kompetenzen.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Überblick Kompetenzen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Allgemein/Unterrichtsverlauf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unterrichtsverlauf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anonymität und Privatsphäre
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anonymität und Privatsphäre
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/TASK%20Artikelanalyse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwicklungen in IT-Sicherheit und Alltag
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/TASK%20Aufgabenblatt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privatsphäre in der digitalen Welt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/TASK%20Hidden%20Service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onion-Service einstellen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Anonymit%C3%A4t%20und%20Privatsph%C3%A4re/TASK%20PiHole.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiHole einrichten
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundlagen, Grundbegriffe & Motivation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grundlagen, Grundbegriffe & Motivation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Grundlagen%2C%20Grundbegriffe%20%26%20Motivation/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Grundlagen%2C%20Grundbegriffe%20%26%20Motivation/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Grundlagen%2C%20Grundbegriffe%20%26%20Motivation/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Grundlagen%2C%20Grundbegriffe%20%26%20Motivation/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grundlagen, Grundbegriffe &amp; Motivation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hashing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hashing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hashing/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hashing in der Praxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging und SIEM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Logging und SIEM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="TASK%20%28Publication%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Management verstehen und anwenden
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Auswertung
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="TASK.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Auswertung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einführung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kompetenzzuordnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompetenzzuordnung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompetenzzuordnung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundlagen-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundlagen der IT Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methoden-und-verfahren-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methoden und Verfahren der IT-Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-aufgabenbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Aufgabenbeschreibung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Aufgabenbeschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-grundkompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Grundkompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Grundkompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-1-log-dateien-in-betriebssystemen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 1 - Log-Dateien in Betriebssystemen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-2-einfuhrung-in-die-syslog-analyse-unter-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 2 - Einführung in die Syslog-Analyse unter Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-3-analyse-von-windows-event-logs-zur-erkennung-von-sicherheitsvorfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 3 - Analyse von Windows Event Logs zur Erkennung von Sicherheitsvorfällen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-4-analyse-von-windows-sysmon-events-zur-erkennung-von-sicherheitsvorfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 4 - Analyse von Windows Sysmon Events zur Erkennung von Sicherheitsvorfällen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-5-einfuhrung-in-siem-online-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 5 - Einführung in SIEM (Online-Lab)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-6-logging-szenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 6 - Logging Szenarien
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-erweiterte-kompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Erweiterte Kompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Erweiterte Kompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-7-datenquelle-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 7 - Datenquelle einrichten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-8-erste-suchabfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 8 - Erste Suchabfragen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-9-analysiere-und-visualisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 9 - Analysiere und Visualisierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fragestellungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragestellungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewertung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-read-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Read Material
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attachments
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netzwerksicherheit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Netzwerksicherheit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-ARP%20Spoofing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARP‑Spoofing – Konzept, Beobachtung und Sicherheitsbewertung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-DNS%20Tunneling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNS-Tunneling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-Iptables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firewall-Analyse und Paketfilterung mit iptables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-Pentesting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heimnetzwerk-Sicherheitsanalyse mit Nmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-SSH%20Tunneling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH-Tunneling und erweiterte Nutzung von SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Netzwerksicherheit/TASK-WLAN%20Sicherheit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WLAN-Sicherheitsanalyse mit airodump-ng und aircrack-ng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physische Sicherheit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Physische Sicherheit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Physische%20Sicherheit/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Physische%20Sicherheit/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Physische%20Sicherheit/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physische Sicherheit „Game Over durch Access“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechtliche Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rechtliche Grundlagen
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechtliche%20Grundlagen/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechtliche%20Grundlagen/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rechtliche%20Grundlagen/TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rechtliche Grundlagen der IT-Sicherheit – Cybercrime &amp; Strafrecht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Template
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Template/Attachments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attachments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Template/PreRead.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PreRead
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Template/Software.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Template/Template-JG1-TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Name
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Template/Template-JG2-GG3-TASK.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise Title
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einführung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ziele
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kompetenzzuordnung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompetenzzuordnung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompetenzzuordnung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grundlagen-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grundlagen der IT Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methoden-und-verfahren-der-it-sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methoden und Verfahren der IT-Sicherheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-aufgabenbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Aufgabenbeschreibung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Aufgabenbeschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-grundkompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Grundkompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Grundkompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-1-log-dateien-in-betriebssystemen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 1 - Log-Dateien in Betriebssystemen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-2-einfuhrung-in-die-syslog-analyse-unter-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 2 - Einführung in die Syslog-Analyse unter Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-3-analyse-von-windows-event-logs-zur-erkennung-von-sicherheitsvorfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 3 - Analyse von Windows Event Logs zur Erkennung von Sicherheitsvorfällen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-4-analyse-von-windows-sysmon-events-zur-erkennung-von-sicherheitsvorfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 4 - Analyse von Windows Sysmon Events zur Erkennung von Sicherheitsvorfällen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-5-einfuhrung-in-siem-online-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 5 - Einführung in SIEM (Online-Lab)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-6-logging-szenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 6 - Logging Szenarien
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-erweiterte-kompetenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe Erweiterte Kompetenz:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabe Erweiterte Kompetenz:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#teil-7-datenquelle-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 7 - Datenquelle einrichten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-8-erste-suchabfragen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 8 - Erste Suchabfragen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teil-9-analysiere-und-visualisierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teil 9 - Analysiere und Visualisierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fragestellungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fragestellungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abgabe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewertung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-read-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Read Material
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attachments
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="log-auswertung">Log Auswertung</h1>
+<h2 id="einfuhrung">Einführung</h2>
+<p>Die Protokollierung von Systemereignissen ist ein zentraler Bestandteil der IT-Sicherheit. Betriebssysteme, Anwendungen und Netzwerkgeräte erzeugen laufend sogenannte <strong>Log-Dateien</strong>, in denen wichtige Informationen über Aktivitäten, Fehler, Anmeldungen oder Sicherheitsereignisse gespeichert werden. Diese Daten ermöglichen es Administratoren und Sicherheitsverantwortlichen, den Zustand eines Systems zu überwachen, Probleme zu analysieren und mögliche Angriffe frühzeitig zu erkennen.</p>
+<p>Besonders bei Sicherheitsvorfällen liefern Logs oft die wichtigsten Hinweise zur Ursachenanalyse. Durch die gezielte Auswertung von Protokolldaten können verdächtige Anmeldeversuche, ungewöhnliche Netzwerkverbindungen, fehlerhafte Prozesse oder Manipulationsversuche identifiziert werden. Moderne Überwachungslösungen wie <strong>Sysmon</strong> oder <strong>SIEM-Systeme</strong> erweitern diese Möglichkeiten, indem sie Ereignisse aus verschiedenen Quellen sammeln, korrelieren und automatisiert auswerten.</p>
+<p>In dieser Übung werden Log-Dateien unter Windows und Linux analysiert und hinsichtlich ihrer sicherheitsrelevanten Informationen untersucht. Dabei werden verschiedene Werkzeuge zur Überwachung und Auswertung von Systemereignissen eingesetzt. Ziel ist es, typische Sicherheitsvorfälle anhand von Log-Daten zu erkennen, Zusammenhänge zwischen Ereignissen herzustellen und die gewonnenen Erkenntnisse für die Bewertung der Systemsicherheit zu nutzen.</p>
+<h2 id="ziele">Ziele</h2>
+<ul>
+<li>Log-Dateien in Windows und Linux finden und verstehen</li>
+<li>Wichtige Informationen (Zeit, Benutzer, IP, Prozess) aus Logs lesen</li>
+<li>Sicherheitsrelevante Ereignisse identifizieren (z. B. Logins, Fehler, Netzwerkverbindungen)</li>
+<li>Log-Daten gezielt filtern und auswerten</li>
+<li>Zusammenhänge zwischen mehreren Ereignissen erkennen (Korrelation)</li>
+<li>Einfache Sicherheitsvorfälle (Incidents) erkennen und bewerten</li>
+<li>Grundprinzipien von SIEM und Detection-Regeln verstehen</li>
+</ul>
+<h2 id="kompetenzzuordnung">Kompetenzzuordnung</h2>
+<h4 id="grundlagen-der-it-sicherheit">Grundlagen der IT Sicherheit</h4>
+<ul>
+<li>Verschiedene Angriffsmethoden und Maßnahmen zur Absicherung benennen und erklären</li>
+<li>Strategien zur Vermeidung von Datenlecks entwickeln</li>
+</ul>
+<h4 id="methoden-und-verfahren-der-it-sicherheit">Methoden und Verfahren der IT-Sicherheit</h4>
+<ul>
+<li>die Sicherheit eines Systems erhöhen</li>
+</ul>
+<h2 id="voraussetzungen">Voraussetzungen</h2>
+<p><strong>Grundkompetenz</strong></p>
+<ul>
+<li>Ein Linux-Rechner (vorzugsweise Ubuntu)</li>
+<li>Vertrautheit mit der Linux-Befehlszeile</li>
+<li>Ein Windows-Rechner (Windows 10 oder höher)</li>
+<li>Grundkenntnisse des Windows-Betriebssystems und dessen Administration</li>
+<li>Installiere <a href="https://learn.microsoft.com/de-de/sysinternals/downloads/sysmon">Sysmon - Sysinternals | Microsoft Learn</a></li>
+<li>Sysmon configuration <a href="https://github.com/swiftonsecurity/sysmon-config">GitHub - SwiftOnSecurity/sysmon-config: Sysmon configuration file template with default high-quality event tracing · GitHub</a></li>
+<li>Optional <a href="https://www.microsoft.com/en-us/download/details.aspx?id=24659">Download Log Parser 2.2 from Official Microsoft Download Center</a></li>
+<li>Optional <a href="https://techcommunity.microsoft.com/blog/exchange/introducing-log-parser-studio/601131/replies/4008001">Introducing: Log Parser Studio | Microsoft Community Hub</a></li>
+</ul>
+<p><strong>Erweiterte Kompetenz</strong></p>
+<ul>
+<li>Splunk Enterprise oder Splunk Free (lokal installiert oder als Cloud-Testinstanz) - <a href="https://help.splunk.com/en/splunk-enterprise/administer/admin-manual/9.4/configure-splunk-licenses/about-splunk-free">About Splunk Free | Splunk Docs</a></li>
+<li>Zugriff auf eine Windows-Umgebung (z. B. VM oder physischer Rechner)</li>
+<li>Windows Event Logs (z. B. <code>.evtx</code> Dateien oder Live-Forwarding via Universal Forwarder)</li>
+</ul>
+<h2 id="detaillierte-aufgabenbeschreibung">Detaillierte Aufgabenbeschreibung</h2>
+<h3 id="aufgabe-grundkompetenz">Aufgabe Grundkompetenz:</h3>
+<h4 id="teil-1-log-dateien-in-betriebssystemen">Teil 1 - Log-Dateien in Betriebssystemen</h4>
+<p>Finde heraus, <strong>wo Log-Dateien in verschiedenen Betriebssystemen (Windows, Mac, Linux) gespeichert sind</strong> und welche Informationen sie enthalten.</p>
+<p>Welche Unterschiede findest du zwischen den Systemen?</p>
+<p>Recherchiere und teste <strong>System Monitoring Tools</strong>. Beschreibe deren Funktion jeweils mit 1-2 Sätzen.</p>
+<p>Beantworte kurz:</p>
+<ul>
+<li>Was ist der Unterschied zwischen: Monitoring Tool und SIEM-System</li>
+<li>Warum sind Logs eine wichtige Grundlage für Sicherheitsanalysen?</li>
+</ul>
+<h4 id="teil-2-einfuhrung-in-die-syslog-analyse-unter-linux">Teil 2 - Einführung in die Syslog-Analyse unter Linux</h4>
+<p>Syslog ist ein standardisiertes Protokoll zur Sammlung und Speicherung von Log-Nachrichten aus verschiedenen Systemprozessen und Anwendungen.</p>
+<p><strong>Aufgabe 1 – Syslog-Konfiguration verstehen</strong></p>
+<p>Öffne die Konfigurationsdatei:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/rsyslog.conf
+</span></code></pre></div>
+<p>Prüfen Sie die Konfigurationsanweisungen, um zu verstehen, wie Syslog eingerichtet ist.</p>
+<p>Identifizieren die verschiedenen Protokollierungsfunktionen (z. B. auth, cron, daemon) und die zugehörigen Protokolldateien (z. B. syslog, auth.log).</p>
+<p><strong>Aufgabe 2 – Zugriff auf Log-Dateien</strong></p>
+<p>Liste die verfügbaren Syslog-Dateien auf, um die verschiedenen vom System generierten Protokolldateien zu verstehen:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/var/log/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ls<span class="w"> </span>-l
+</span></code></pre></div>
+<p>Ergebnis: Überblick über vorhandene Log-Dateien</p>
+<p><strong>Aufgabe 3 – Log-Dateien filtern</strong></p>
+<p>Filtere Logs nach Datum:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>grep<span class="w"> </span><span class="s1">'Jun 12'</span><span class="w"> </span>syslog
+</span></code></pre></div>
+<p>Suche nach einem bestimmten Dienst (z. B. SSH):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>grep<span class="w"> </span><span class="s1">'sshd'</span><span class="w"> </span>syslog
+</span></code></pre></div>
+<p>Kombiniere Filter:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>grep<span class="w"> </span><span class="s1">'Jun 12'</span><span class="w"> </span>syslog<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'sshd'</span>
+</span></code></pre></div>
+<p>Ergebnis: Verständnis, wie gezielt Informationen aus Logs extrahiert werden können und Fähigkeit, relevante Ereignisse schnell zu finden</p>
+<p><strong>Aufgabe 4 – Authentifizierungs-Logs analysieren</strong></p>
+<p>Öffne das Login-Log:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>less<span class="w"> </span>auth.log
+</span></code></pre></div>
+<ol>
+<li>Identifiziere unterschiedliche Ereignisse:<ul>
+<li>Erfolgreiche Logins</li>
+<li>Fehlgeschlagene Logins</li>
+<li>Benutzerwechsel</li>
+</ul>
+</li>
+<li>Notiere für ausgewählte Ereignisse:<ul>
+<li>Zeitstempel</li>
+<li>Benutzername</li>
+<li>IP-Adresse</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Fähigkeit, sicherheitsrelevante Logeinträge zu erkennen</p>
+<p><strong>Aufgabe 5 – Log-Daten auswerten</strong></p>
+<p>Anzahl fehlgeschlagener Loginversuche pro IP:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>awk<span class="w"> </span><span class="s1">'/sshd/ &amp;&amp; /Failed password/ {print $11}'</span><span class="w"> </span>auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
+</span></code></pre></div>
+<p>Erfolgreiche Logins pro Benutzer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>awk<span class="w"> </span><span class="s1">'/sshd/ &amp;&amp; /Accepted password/ {print $9}'</span><span class="w"> </span>auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
+</span></code></pre></div>
+<p>Häufigste Log-Meldungen:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>awk<span class="w"> </span><span class="s1">'{print $6}'</span><span class="w"> </span>syslog<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
+</span></code></pre></div>
+<p>Ergebnis: Erkennung auffälliger Muster und erste statistische Analyse von Logs</p>
+<h4 id="teil-3-analyse-von-windows-event-logs-zur-erkennung-von-sicherheitsvorfallen">Teil 3 - Analyse von Windows Event Logs zur Erkennung von Sicherheitsvorfällen</h4>
+<p>Windows Event Logs sind eine wichtige Informationsquelle über:</p>
+<ul>
+<li>Systemaktivitäten</li>
+<li>Benutzeraktionen</li>
+<li>mögliche Sicherheitsprobleme</li>
+</ul>
+<p><strong>Aufgabe 1 – Zugriff auf Windows Event Logs</strong></p>
+<ol>
+<li>
+<p>Öffne die Ereignisanzeige:</p>
+<ul>
+<li><code>Win + R</code> drücken</li>
+<li><code>eventvwr</code> eingeben und bestätigen</li>
+</ul>
+</li>
+<li>
+<p>Navigiere zu:</p>
+</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Windows-Protokolle → System
+</span></code></pre></div>
+<ol>
+<li>
+<p>Analysiere die angezeigten Einträge:</p>
+<ul>
+<li>Welche Arten von Ereignissen werden protokolliert?</li>
+<li>Welche Informationen sind enthalten?</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Zugriff auf System-Logs und Verständnis der grundlegenden Event-Typen</p>
+<p><strong>Aufgabe 2 – Security Event Logs verstehen</strong></p>
+<ol>
+<li>Navigiere zu:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Windows-Protokolle → Security
+</span></code></pre></div>
+<ol>
+<li>
+<p>Untersuche die Einträge mit Fokus auf:</p>
+<ul>
+<li>Login-Versuche</li>
+<li>Benutzerverwaltung</li>
+<li>Sicherheitsrichtlinien</li>
+</ul>
+</li>
+<li>
+<p>Identifiziere wichtige <strong>Event-IDs</strong>:</p>
+<ul>
+<li><strong>4624</strong> → Erfolgreicher Login</li>
+<li><strong>4625</strong> → Fehlgeschlagener Login</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Verständnis sicherheitsrelevanter Events und Kenntnis wichtiger Event-IDs</p>
+<p><strong>Aufgabe 3 – Logs filtern und durchsuchen</strong></p>
+<ol>
+<li>Wähle im rechten Menü: <strong>„Aktuelles Protokoll filtern…“</strong></li>
+<li>Filtere nach einer Event-ID, z. B.:<ul>
+<li><code>4625</code> (fehlgeschlagene Logins)</li>
+</ul>
+</li>
+<li>Verwende die Suchfunktion:<ul>
+<li>Suche nach einem bestimmten Benutzer oder Rechner</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Gefilterte Ansicht relevanter Sicherheitsereignisse und Fähigkeit, große Logmengen gezielt zu durchsuchen</p>
+<p><strong>Aufgabe 4 – Ereignisse analysieren</strong></p>
+<ol>
+<li>Wähle ein Sicherheitsereignis (z. B. fehlgeschlagener Login)</li>
+<li>Analysiere die Details:<ul>
+<li>Zeitstempel</li>
+<li>Benutzerkonto</li>
+<li>Quelle (Rechner / IP-Adresse)</li>
+<li>Fehlermeldung / Code</li>
+</ul>
+</li>
+<li>Kombiniere mehrere Events:<ul>
+<li>z. B. mehrere Fehlversuche + erfolgreicher Login</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Detaillierte Analyse einzelner Events und Verständnis von Zusammenhängen (Korrelationen)</p>
+<p><strong>Aufgabe 5 – Erweiterte Log-Analyse mit Log Parser Studio (optional)</strong></p>
+<ol>
+<li>Installiere <strong>Log Parser Studio</strong> (<a href="https://www.microsoft.com/en-us/download/details.aspx?id=24659">Download Log Parser 2.2 from Official Microsoft Download Center</a>)</li>
+<li>Importiere eine Event-Log-Datei</li>
+<li>Führe eine Analyse durch, z. B.:</li>
+</ol>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">EXTRACT_TOKEN</span><span class="p">(</span><span class="n">TextData</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">EventID</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">EventCount</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s1">'[LOGFILEPATH]'</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">EventID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4625</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">EventID</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">EventCount</span><span class="w"> </span><span class="k">DESC</span>
+</span></code></pre></div>
+<p>Entwickle eigene Abfragen:</p>
+<ul>
+<li>Häufige Fehlanmeldungen</li>
+<li>aktive Benutzer</li>
+<li>verdächtige Muster</li>
+</ul>
+<p>Ergebnis: Erweiterte Auswertung von Logdaten und Nutzung von Abfragen zur Mustererkennung</p>
+<h4 id="teil-4-analyse-von-windows-sysmon-events-zur-erkennung-von-sicherheitsvorfallen">Teil 4 - Analyse von Windows Sysmon Events zur Erkennung von Sicherheitsvorfällen</h4>
+<p>In diesem Labor lernst du, wie du <strong>Windows Sysmon (System Monitor)</strong> verwendest, um sicherheitsrelevante Ereignisse zu analysieren.</p>
+<p>Sysmon ist ein erweitertes Monitoring-Tool für Windows, das detaillierte Informationen in die Ereignisanzeige schreibt, z. B.:</p>
+<ul>
+<li>Prozessstarts</li>
+<li>Netzwerkverbindungen</li>
+<li>Dateioperationen</li>
+</ul>
+<p>Durch die Analyse dieser Logs kannst du:</p>
+<ul>
+<li>verdächtige Aktivitäten erkennen</li>
+<li>mögliche Sicherheitsvorfälle identifizieren</li>
+</ul>
+<p><strong>Installation von Sysmon</strong></p>
+<ol>
+<li>Lade Sysmon von der <strong>Sysinternals-Webseite</strong> (<a href="https://learn.microsoft.com/de-de/sysinternals/downloads/sysmon">Sysmon - Sysinternals | Microsoft Learn</a>)herunter</li>
+<li>Entpacke die ZIP-Datei</li>
+<li>Lade eine fertige Konfigurationsdatei (z. B. SwiftOnSecurity) herunter (<a href="https://github.com/swiftonsecurity/sysmon-config">GitHub - SwiftOnSecurity/sysmon-config: Sysmon configuration file template with default high-quality event tracing · GitHub</a>)</li>
+<li>Öffne die Eingabeaufforderung als Administrator</li>
+<li>
+<p>Navigiere in das Sysmon-Verzeichnis</p>
+</li>
+<li>
+<p>Installation: <code>sysmon -accepteula -i sysmonconfig-export.xml</code></p>
+</li>
+</ol>
+<p><strong>Aufgabe 1 – Installation und Funktion überprüfen</strong></p>
+<ol>
+<li>
+<p>Öffne die Ereignisanzeige</p>
+</li>
+<li>
+<p>Navigiere zu:</p>
+</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Anwendungs- und Dienstprotokolle → Microsoft → Windows → Sysmon
+</span></code></pre></div>
+<ol>
+<li>
+<p>Prüfe:</p>
+</li>
+<li>
+<p>Werden Events angezeigt?</p>
+</li>
+<li>Werden neue Einträge erzeugt?</li>
+</ol>
+<p>Ergebnis: Sichtbare Sysmon-Events → Sysmon läuft korrekt</p>
+<p><strong>Aufgabe 2 – Prozessstarts analysieren</strong></p>
+<ol>
+<li>Öffne:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Sysmon → Operational
+</span></code></pre></div>
+<ol>
+<li>
+<p>Suche nach:</p>
+<ul>
+<li><strong>Event ID 1 (Process Creation)</strong></li>
+</ul>
+</li>
+<li>
+<p>Analysiere:</p>
+<ul>
+<li>Name des Prozesses</li>
+<li>Parent-Prozess</li>
+<li>Command Line (Startparameter)</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Erkennung ungewöhnlicher Programme oder verdächtiger Befehle, Beispiel für verdächtig: unbekannte <code>.exe</code>, ungewöhnliche Startparameter</p>
+<p><strong>Aufgabe 3 – Netzwerkverbindungen überwachen</strong></p>
+<ol>
+<li>Suche nach:<ul>
+<li><strong>Event ID 3 (Network Connection)</strong></li>
+</ul>
+</li>
+<li>Analysiere:<ul>
+<li>Quell-IP und Port</li>
+<li>Ziel-IP und Port</li>
+<li>Prozess, der die Verbindung erstellt hat</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Identifikation unerwarteter externer Verbindungen, Beispiele: Verbindung zu unbekannten IPs, ungewöhnliche Ports</p>
+<p><strong>Aufgabe 4 – Dateiaktivitäten untersuchen</strong></p>
+<ol>
+<li>Suche nach:<ul>
+<li><strong>Event ID 11 (File Create)</strong></li>
+</ul>
+</li>
+<li>Prüfe:<ul>
+<li>Dateipfad</li>
+<li>Dateiname</li>
+<li>verantwortlicher Prozess</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Erkennung ungewöhnlicher Datei-Erstellungen, achte besonders auf: Systemverzeichnisse, temporäre Dateien, unbekannte Programme</p>
+<p><strong>Aufgabe 5 – Image Load Events analysieren</strong></p>
+<ol>
+<li>Suche nach:<ul>
+<li><strong>Event ID 7 (Image Load)</strong></li>
+</ul>
+</li>
+<li>Analysiere:<ul>
+<li>Pfad der geladenen Datei</li>
+<li>Prozess, der sie geladen hat</li>
+</ul>
+</li>
+</ol>
+<p>Ergebnis: Auffinden ungewöhnlicher DLL- oder EXE-Ladevorgänge, kann auf Malware-Aktivität hindeuten</p>
+<h4 id="teil-5-einfuhrung-in-siem-online-lab">Teil 5 - Einführung in SIEM (Online-Lab)</h4>
+<p>Du bearbeitest eigenständig das TryHackMe-Lab: https://tryhackme.com/room/introtosiem</p>
+<p><img src="Pictures\TryHackMeSIEM.jpg" style="zoom:70%;" /></p>
+<p>Dabei dokumentierst du die Erkenntnisse und beantwortest Aufgaben.</p>
+<ol>
+<li>Erstelle einen Account auf <strong>TryHackMe</strong> (falls noch nicht vorhanden).</li>
+<li>Öffne das Lab:  <em>Intro to SIEM</em></li>
+<li>Starte die virtuelle Maschine (falls notwendig).</li>
+<li>Bearbeite das komplette Modul selbstständig.</li>
+</ol>
+<p>Wichtig:</p>
+<ul>
+<li>Lies alle Erklärungen genau</li>
+<li>Führe alle Schritte aktiv durch</li>
+<li>Notiere dir wichtige Begriffe</li>
+</ul>
+<p>Beschreibe einen konkreten Sicherheitsvorfall aus dem Lab.</p>
+<h4 id="teil-6-logging-szenarien"><strong>Teil 6 - Logging Szenarien</strong></h4>
+<p><strong>Windows</strong></p>
+<ul>
+<li>
+<p><strong>Szenario 1:</strong> Ein Benutzer hat mehrmals versucht, sich anzumelden, ist jedoch gescheitert. Wie kannst du anhand der Windows Event Logs diese fehlgeschlagenen Login-Versuche identifizieren und dabei folgende Informationen ermitteln?</p>
+</li>
+<li>
+<p><strong>Szenario 2:</strong> Ein Benutzer konnte sich nach mehreren fehlgeschlagenen Anmeldeversuchen erfolgreich anmelden. Wie kannst du mithilfe der Windows Event Logs  feststellen, ob mehrere fehlgeschlagene Logins kurz vor einem erfolgreichen Login aufgetreten sind und beurteilen, ob es sich dabei um einen möglichen Brute-Force-Angriff handelt?</p>
+</li>
+<li><strong>Szenario 3:</strong> Ein Computer ist unerwartet abgestürzt. Wie kannst du mithilfe der Windows System-Logs herausfinden, wann der Absturz stattgefunden hat und ob zuvor Warnungen oder Hinweise auf Probleme im System vorhanden waren?</li>
+<li><strong>Szenario 4:</strong> Die Windows-Firewall wurde auf einem System deaktiviert. Wie kannst du anhand der System-Logs feststellen, wann die Firewall ausgeschaltet wurde und beurteilen, ob dieses Ereignis ein mögliches Sicherheitsrisiko oder Hinweis auf eine Manipulation darstellt?</li>
+</ul>
+<p><strong>Linux</strong></p>
+<ul>
+<li>
+<p><strong>Szenario 5:</strong> Es besteht der Verdacht, dass ein Angreifer versucht, sich über SSH auf einem Linux-System anzumelden. Wie kannst du mithilfe der Authentifizierungs-Logs und geeigneter Filter die angreifende IP-Adresse identifizieren und feststellen, wie oft die fehlgeschlagenen Login-Versuche aufgetreten sind, um einen möglichen Brute-Force-Angriff zu erkennen?</p>
+</li>
+<li>
+<p><strong>Szenario 6:</strong> Ein Benutzer hat sich erfolgreich auf einem Linux-System angemeldet. Wie kannst du mithilfe der Authentifizierungs-Logs und dem Filter herausfinden, welcher Benutzer sich angemeldet hat und von welcher IP-Adresse der Zugriff erfolgte?</p>
+</li>
+<li>
+<p><strong>Szenario 7:</strong> Es besteht der Verdacht, dass auf einem Linux-System ein ungewöhnlicher Prozess oder Cron-Job ausgeführt wurde. Wie kannst du mithilfe der System-Logs herausfinden, welche Prozesse zuletzt gestartet wurden und beurteilen, ob sich darunter verdächtige oder ungewöhnliche Einträge befinden?</p>
+</li>
+</ul>
+<h3 id="aufgabe-erweiterte-kompetenz">Aufgabe Erweiterte Kompetenz:</h3>
+<ul>
+<li>Windows Event Logs in Splunk importierten</li>
+<li>Durchführen von grundlegenden Suchabfragen</li>
+<li>Identifikation sicherheitsrelevanter Ereignisse</li>
+<li>Dashboards zur Visualisierung erstellen</li>
+</ul>
+<p>Hilfestellung: <a href="Attachments/splunk_cheat_sheet.pdf">Cheat-Sheet</a></p>
+<h4 id="teil-7-datenquelle-einrichten">Teil 7 - Datenquelle einrichten</h4>
+<ul>
+<li>
+<p>Installiere Splunk auf einem Windows-System.</p>
+</li>
+<li>
+<p>Konfiguriere Splunk so, dass er folgende Logs an Splunk sendet (<a href="https://www.splunk.com/en_us/resources/videos/getting-data-in-to-splunk-enterprise-windows.html">Getting Data In (Windows) | Splunk</a>):</p>
+<ul>
+<li><code>Security</code></li>
+<li><code>System</code></li>
+<li><code>Application</code></li>
+</ul>
+</li>
+<li>
+<p>Alternativ: Importiere eine <code>.evtx</code> Datei manuell über die Splunk Web-Oberfläche.</p>
+</li>
+</ul>
+<h4 id="teil-8-erste-suchabfragen">Teil 8 - Erste Suchabfragen</h4>
+<ul>
+<li>Führe eine einfache Suche durch: <code>index=main sourcetype=WinEventLog:Security</code></li>
+<li>Filtere nach fehlgeschlagenen Anmeldeversuchen: <code>index=main sourcetype=WinEventLog:Security EventCode=4625</code></li>
+<li>Zeige nur bestimmte Felder an: <code>index=main sourcetype=WinEventLog:Security EventCode=4625 | table _time, Account_Name, Workstation_Name, Failure_Reason</code></li>
+</ul>
+<h4 id="teil-9-analysiere-und-visualisierung">Teil 9 - Analysiere und Visualisierung</h4>
+<ul>
+<li>
+<p>Erstelle ein Zeitdiagramm der fehlgeschlagenen Logins: <code>index=main sourcetype=WinEventLog:Security EventCode=4625 | timechart count by Account_Name</code></p>
+</li>
+<li>
+<p>Erstelle ein Dashboard mit:</p>
+<ul>
+<li>Zeitverlauf der Logins</li>
+<li>Top 5 Benutzer mit den meisten Fehlversuchen</li>
+<li>Karte (falls IP-Adressen vorhanden sind)</li>
+</ul>
+</li>
+</ul>
+<h2 id="fragestellungen">Fragestellungen</h2>
+<p><strong>Log-Dateien &amp; Monitoring</strong></p>
+<ul>
+<li>Warum ist es wichtig, Logs <strong>zentral</strong> zu sammeln und auszuwerten?</li>
+<li>Warum sind Logs eine wichtige <strong>Grundlage</strong> für die IT-Sicherheit?</li>
+<li>Welche <strong>Unterschiede</strong> gibt es zwischen den Logsystemen dieser Betriebssysteme?</li>
+<li>Welche <strong>Arten von Informationen</strong> enthalten Logs typischerweise?</li>
+<li>Was ist der Unterschied zwischen einem <strong>Event</strong> und einem <strong>Incident</strong>?</li>
+</ul>
+<p><strong>Linux</strong></p>
+<ul>
+<li>Was ist <strong>Syslog</strong> und wofür wird es verwendet?</li>
+<li>Welche Informationen findest du in:
+  <code>syslog</code>
+  <code>auth.log</code>?</li>
+<li>Warum ist die Analyse von Authentifizierungs-Logs besonders wichtig?</li>
+<li>Warum ist die <strong>statistische Auswertung</strong> von Logs hilfreich?</li>
+</ul>
+<p><strong>Windows Event Logs</strong></p>
+<ul>
+<li>Welche <strong>Hauptkategorien</strong> gibt es in den Windows-Protokollen?</li>
+<li>Welche <strong>Informationen</strong> enthält ein einzelnes Event?</li>
+</ul>
+<p><strong>Sysmon</strong></p>
+<ul>
+<li>Was ist <strong>Sysmon</strong> und welche Vorteile hat es gegenüber normalen Windows Logs?</li>
+<li>Welche <strong>Arten von Ereignissen</strong> kann Sysmon erfassen?</li>
+</ul>
+<p><strong>SIEM (TryHackMe)</strong></p>
+<ul>
+<li>Welche Aufgaben erfüllt ein SIEM im <strong>Security Operations Center (SOC)</strong>?</li>
+<li>Was versteht man unter <strong>Log-Korrelation</strong>?</li>
+<li>Was ist ein <strong>Use Case</strong> im SIEM-Kontext?</li>
+<li>Warum ist <strong>Automatisierung</strong> in SIEM-Systemen wichtig?</li>
+<li>Welche Rolle spielen <strong>Dashboards</strong> in einem SIEM?</li>
+</ul>
+<h2 id="abgabe">Abgabe</h2>
+<p>Die durchgeführten Tätigkeiten und gewünschten Elemente müssen in einem Protokoll zusammengefasst werden.</p>
+<p>Die Fragestellungen sollen ebenfalls in diesem Dokument bearbeitet werden.</p>
+<p>Das Protokoll ist eingescannt als ein <strong>PDF</strong> File zusammen mit einem evt. vorhandenem Projektfile auf moodle abzugeben.</p>
+<p><u>Ergänzung TryHackMe Online Lab:</u></p>
+<p>Die Abgabe soll enthalten:</p>
+<ul>
+<li>Screenshots aus dem Lab (mindestens 2)</li>
+<li>Kurze Zusammenfassung</li>
+</ul>
+<h2 id="bewertung">Bewertung</h2>
+<ul>
+<li>Gruppengröße: 1 Person</li>
+<li>Maximale Punktezahl Grundkompetenz: 2</li>
+<li>Zusätzliche Punkte erweiterte Kompetenz (vollständige GK ist Voraussetzung): 1</li>
+<li>Maximale Punkteanzahl bei verspäteter Abgabe (&lt;= 1 Woche): 1</li>
+<li>Maximale Punkteanzahl bei verspäteter Abgabe (&gt; 1 Woche): 0,5</li>
+</ul>
+<h2 id="quellen">Quellen</h2>
+<ul>
+<li><a href="https://help.splunk.com/en/splunk-enterprise/administer/admin-manual/9.4/configure-splunk-licenses/about-splunk-free">About Splunk Free | Splunk Docs</a> - letzter Abruf 31.07.2025</li>
+<li><a href="https://www.splunk.com/en_us/resources/videos/getting-data-in-to-splunk-enterprise-windows.html">Getting Data In (Windows) | Splunk</a> - letzter Abruf 31.07.2025</li>
+<li><a href="https://www.tekstream.com/blog/blog-monitoring-windows-event-logs-in-splunk/">Monitoring Windows Event Logs in Splunk | TekStream Solutions</a> - letzter Abruf 31.07.2025</li>
+<li><a href="https://clarusway.com/windows-log-investigation-in-splunk/">Windows Log Investigation In Splunk | A Comprehensive Guide</a> - letzter Abruf 31.07.2025</li>
+<li><a href="https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/9.1/get-windows-data/monitor-windows-event-log-data-with-splunk-enterprise">Monitor Windows event log data with Splunk Enterprise | Splunk Docs</a> - letzter Abruf 31.07.2025</li>
+<li><a href="https://github.com/swiftonsecurity/sysmon-config">GitHub - SwiftOnSecurity/sysmon-config: Sysmon configuration file template with default high-quality event tracing · GitHub</a> - letzter Abruf 22.6.2026</li>
+<li><a href="https://learn.microsoft.com/de-de/sysinternals/downloads/sysmon">Sysmon - Sysinternals | Microsoft Learn</a> - letzter Abruf 22.6.2026</li>
+</ul>
+<h2 id="pre-read-material">Pre-Read Material</h2>
+<p><em>Ordner nicht gefunden: 3rd year/Logging und SIEM/PreRead-Published</em></p>
+<h2 id="attachments">Attachments</h2>
+<table>
+<thead>
+<tr>
+<th>Datei</th>
+<th>Typ</th>
+<th>Größe</th>
+<th>Geändert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📕 <a href="Attachments/nistspecialpublication800-92.pdf">nistspecialpublication800-92.pdf</a></td>
+<td>.pdf</td>
+<td>1.68 MB</td>
+<td>2026-08-28 13:08</td>
+</tr>
+<tr>
+<td>📕 <a href="Attachments/splunk_cheat_sheet.pdf">splunk_cheat_sheet.pdf</a></td>
+<td>.pdf</td>
+<td>1.95 KB</td>
+<td>2026-08-28 13:08</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>43b74ec Aug 28, 2026 15:07:46 by Berndt Sevcik</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
